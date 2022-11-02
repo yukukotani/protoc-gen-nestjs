@@ -2,7 +2,7 @@
   "name": "demo",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.ts",
   "scripts": {
     "generate": "buf generate buf.build/bufbuild/eliza",
     "dev": "tsx ./src/index.ts"
