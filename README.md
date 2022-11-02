@@ -5,6 +5,8 @@
 
 The code generator for Protocol Buffers for [NestJS](https://docs.nestjs.com/microservices/grpc), based on [@bufbuild/protoc-gen-es](https://www.npmjs.com/package/@bufbuild/protoc-gen-es).
 
+Highly inspired by [ts-proto](https://github.com/stephenh/ts-proto) and generates roughly the same code as it.
+
 ## Features
 
 - Generates interfaces of controllers from gRPC services.
