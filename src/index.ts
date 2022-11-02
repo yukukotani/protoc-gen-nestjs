@@ -61,16 +61,23 @@ function printService(f: GeneratedFile, service: DescService) {
 }
 
 function printMethod(f: GeneratedFile, method: DescMethod) {
-  if (method.methodKind === MethodKind.Unary) {
-    f.print(makeJsDoc(method, "  "));
-    f.print(
-      "  ",
-      localName(method),
-      "(request: ",
-      method.input,
-      "): Promise<",
-      method.output,
-      ">;"
-    );
-  }
+  const Observable = f.import("Observable", "rxjs");
+  const isStreamReq = [
+    MethodKind.BiDiStreaming,
+    MethodKind.ClientStreaming,
+  ].includes(method.methodKind);
+  const isStreamRes = method.methodKind !== MethodKind.Unary;
+
+  f.print(makeJsDoc(method, "  "));
+  f.print(
+    "  ",
+    localName(method),
+    "(request: ",
+    ...(isStreamReq ? [Observable, "<", method.input, ">"] : [method.input]),
+    "): ",
+    isStreamRes ? Observable : "Promise",
+    "<",
+    method.output,
+    ">;"
+  );
 }
