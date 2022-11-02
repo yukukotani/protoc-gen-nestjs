@@ -1,7 +1,11 @@
 import { createEcmaScriptPlugin } from "@bufbuild/protoplugin";
 import { version } from "../package.json";
-import { makeJsDoc, localName } from "@bufbuild/protoplugin/ecmascript";
-import { MethodKind } from "@bufbuild/protobuf";
+import {
+  makeJsDoc,
+  localName,
+  GeneratedFile,
+} from "@bufbuild/protoplugin/ecmascript";
+import { DescMethod, DescService, MethodKind } from "@bufbuild/protobuf";
 import type { Schema } from "@bufbuild/protoplugin/ecmascript";
 
 export const protocGenNestjs = createEcmaScriptPlugin({
@@ -16,27 +20,35 @@ function generateTs(schema: Schema) {
     f.preamble(file);
     // Convert the Message ImportSymbol to a type-only ImportSymbol
     for (const service of file.services) {
-      const localServiceName = localName(service);
-      f.print(makeJsDoc(service));
-      f.print("export interface ", localServiceName, "Controller {");
-      service.methods.forEach((method, i) => {
-        if (i !== 0) {
-          f.print();
-        }
-        if (method.methodKind === MethodKind.Unary) {
-          f.print(makeJsDoc(method, "  "));
-          f.print(
-            "  ",
-            localName(method),
-            "(request: ",
-            method.input,
-            "): Promise<",
-            method.output,
-            ">;"
-          );
-        }
-      });
+      printService(f, service);
     }
     f.print("}");
+  }
+}
+
+function printService(f: GeneratedFile, service: DescService) {
+  const localServiceName = localName(service);
+  f.print(makeJsDoc(service));
+  f.print("export interface ", localServiceName, "Controller {");
+  service.methods.forEach((method, i) => {
+    if (i !== 0) {
+      f.print();
+    }
+    printMethod(f, method);
+  });
+}
+
+function printMethod(f: GeneratedFile, method: DescMethod) {
+  if (method.methodKind === MethodKind.Unary) {
+    f.print(makeJsDoc(method, "  "));
+    f.print(
+      "  ",
+      localName(method),
+      "(request: ",
+      method.input,
+      "): Promise<",
+      method.output,
+      ">;"
+    );
   }
 }
