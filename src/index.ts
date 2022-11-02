@@ -22,7 +22,6 @@ function generateTs(schema: Schema) {
     for (const service of file.services) {
       printService(f, service);
     }
-    f.print("}");
   }
 }
 
@@ -36,6 +35,26 @@ function printService(f: GeneratedFile, service: DescService) {
     }
     printMethod(f, method);
   });
+  f.print("}");
+
+  const GrpcMethod = f.import("GrpcMethod", "@nestjs/microservices");
+  const methodNames = service.methods
+    .map((method) => `"${localName(method)}"`)
+    .join(", ");
+  f.print("export function ", localServiceName, "Methods() {");
+  f.print("  return function (constructor: Function) {");
+  f.print("    for (const method of [", methodNames, "]) {");
+  f.print(
+    "      const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);"
+  );
+  f.print(
+    "      ",
+    GrpcMethod,
+    "('Members', method)(constructor.prototype[method], method, descriptor);"
+  );
+  f.print("    }");
+  f.print("  };");
+  f.print("}");
 }
 
 function printMethod(f: GeneratedFile, method: DescMethod) {
