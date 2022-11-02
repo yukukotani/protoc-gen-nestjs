@@ -2,20 +2,33 @@ lockfileVersion: 5.4
 
 specifiers:
   '@bufbuild/protobuf': ^0.2.1
-  '@bufbuild/protoplugin': ^0.2.1
-  prettier: ^2.7.1
-  typescript: ^4.8.4
+  '@bufbuild/protoc-gen-es': ^0.2.1
+
+dependencies:
+  '@bufbuild/protobuf': 0.2.1
 
 devDependencies:
-  '@bufbuild/protobuf': 0.2.1
-  '@bufbuild/protoplugin': 0.2.1
-  prettier: 2.7.1
-  typescript: 4.8.4
+  '@bufbuild/protoc-gen-es': 0.2.1_@bufbuild+protobuf@0.2.1
 
 packages:
 
   /@bufbuild/protobuf/0.2.1:
     resolution: {integrity: sha512-7bsong0tlLQvkdq5K1U6qFFn35oggCwxaiOs1LHGsqkP/E1FvW4JmRHkxkjlyMNd01S5GbqCrnyHD5VW6l3Djg==}
+
+  /@bufbuild/protoc-gen-es/0.2.1_@bufbuild+protobuf@0.2.1:
+    resolution: {integrity: sha512-8rfFyKjhuaXOm1mjkIPK8dWzzqAUFOZsFlWCbEXMccc4UWFsVkt/zbw+hHsKI4SUIf4eTzuY074/KMEwVImWMA==}
+    engines: {node: '>=14'}
+    hasBin: true
+    peerDependencies:
+      '@bufbuild/protobuf': 0.2.1
+    peerDependenciesMeta:
+      '@bufbuild/protobuf':
+        optional: true
+    dependencies:
+      '@bufbuild/protobuf': 0.2.1
+      '@bufbuild/protoplugin': 0.2.1
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /@bufbuild/protoplugin/0.2.1:
@@ -52,20 +65,8 @@ packages:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
     dev: true
 
-  /prettier/2.7.1:
-    resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
-    engines: {node: '>=10.13.0'}
-    hasBin: true
-    dev: true
-
   /typescript/4.5.2:
     resolution: {integrity: sha512-5BlMof9H1yGt0P8/WF+wPNw6GfctgGjXp5hkblpyT+8rkASSmkUKMXrxR0Xg8ThVCi/JnHQiKXeBaEwCeQwMFw==}
-    engines: {node: '>=4.2.0'}
-    hasBin: true
-    dev: true
-
-  /typescript/4.8.4:
-    resolution: {integrity: sha512-QCh+85mCy+h0IGff8r5XWzOVSbBO+KfeYrMQh7NJ58QujwcE22u+NUSmUxqF+un70P9GXKxa2HCNiTTMJknyjQ==}
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true

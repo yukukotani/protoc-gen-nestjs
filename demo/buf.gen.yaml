@@ -1,0 +1,9 @@
+version: v1
+plugins:
+  - name: es
+    opt: target=ts
+    out: ./gen
+  - name: nestjs
+    path: ../bin/protoc-gen-nestjs
+    opt: target=ts
+    out: ./gen
