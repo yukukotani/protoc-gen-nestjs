@@ -4,15 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "generate": "buf generate buf.build/bufbuild/eliza"
+    "generate": "buf generate buf.build/bufbuild/eliza",
+    "dev": "tsx ./src/index.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@bufbuild/protoc-gen-es": "^0.2.1"
+    "@bufbuild/protoc-gen-es": "^0.2.1",
+    "@types/node": "^18.11.9",
+    "tsx": "^3.11.0"
   },
   "dependencies": {
-    "@bufbuild/protobuf": "^0.2.1"
+    "@bufbuild/protobuf": "^0.2.1",
+    "@grpc/grpc-js": "^1.7.3",
+    "@nestjs/common": "^9.1.6",
+    "@nestjs/core": "^9.1.6",
+    "@nestjs/microservices": "^9.1.6",
+    "@nestjs/platform-express": "^9.1.6",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.5.7"
   }
 }
