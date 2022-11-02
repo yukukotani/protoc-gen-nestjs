@@ -1,5 +1,8 @@
 # protoc-gen-nestjs
 
+[![npm](https://img.shields.io/npm/v/protoc-gen-nestjs)](https://www.npmjs.com/package/protoc-gen-nestjs)
+[![license](https://img.shields.io/npm/l/protoc-gen-nestjs)](https://github.com/yukukotani/protoc-gen-nestjs/blob/main/LICENSE)
+
 The code generator for Protocol Buffers for [NestJS](https://docs.nestjs.com/microservices/grpc), based on [@bufbuild/protoc-gen-es](https://www.npmjs.com/package/@bufbuild/protoc-gen-es).
 
 ## Features
@@ -90,3 +93,5 @@ export class ElizaController implements ElizaServiceController {
   }
 }
 ```
+
+Streaming is also supported. See [NestJS's doc](https://docs.nestjs.com/microservices/grpc) for detail.
