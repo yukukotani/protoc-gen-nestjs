@@ -5,6 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "generate": "buf generate buf.build/bufbuild/eliza",
+    "generate:dev": "buf generate buf.build/bufbuild/eliza --template buf.gen.dev.yaml",
     "dev": "tsx ./src/index.ts"
   },
   "keywords": [],
