@@ -18,7 +18,7 @@ npm install @bufbuild/protobuf
 
 ## Usage
 
-The demo implementation is available [here](/here).
+The demo implementation is available [here](/demo).
 
 ### Generating codes
 
