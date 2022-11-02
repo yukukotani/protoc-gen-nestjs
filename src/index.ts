@@ -4,6 +4,7 @@ import {
   makeJsDoc,
   localName,
   GeneratedFile,
+  ImportSymbol,
 } from "@bufbuild/protoplugin/ecmascript";
 import { DescMethod, DescService, MethodKind } from "@bufbuild/protobuf";
 import type { Schema } from "@bufbuild/protoplugin/ecmascript";
@@ -38,24 +39,24 @@ function printService(f: GeneratedFile, service: DescService) {
   f.print("}");
 
   const GrpcMethod = f.import("GrpcMethod", "@nestjs/microservices");
-  const unaryMethodNames = service.methods
-    .filter((method) => method.methodKind === MethodKind.Unary)
-    .map((method) => `"${localName(method)}"`)
-    .join(", ");
+  const GrpcStreamMethod = f.import(
+    "GrpcStreamMethod",
+    "@nestjs/microservices"
+  );
+  const unaryReqMethods = service.methods.filter((method) =>
+    [MethodKind.Unary, MethodKind.ServerStreaming].includes(method.methodKind)
+  );
+  const streamReqMethods = service.methods.filter((method) =>
+    [MethodKind.BiDiStreaming, MethodKind.ClientStreaming].includes(
+      method.methodKind
+    )
+  );
+
+  f.print();
   f.print("export function ", localServiceName, "Methods() {");
   f.print("  return function (constructor: Function) {");
-  f.print("    for (const method of [", unaryMethodNames, "]) {");
-  f.print(
-    "      const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);"
-  );
-  f.print(
-    "      ",
-    GrpcMethod,
-    `("`,
-    localServiceName,
-    `", method)(constructor.prototype[method], method, descriptor);`
-  );
-  f.print("    }");
+  printGrpcMethodAnnotations(f, GrpcMethod, unaryReqMethods, service);
+  printGrpcMethodAnnotations(f, GrpcStreamMethod, streamReqMethods, service);
   f.print("  };");
   f.print("}");
 }
@@ -80,4 +81,28 @@ function printMethod(f: GeneratedFile, method: DescMethod) {
     method.output,
     ">;"
   );
+}
+
+function printGrpcMethodAnnotations(
+  f: GeneratedFile,
+  annotation: ImportSymbol,
+  methods: DescMethod[],
+  service: DescService
+) {
+  const methodNames = methods
+    .map((method) => `"${localName(method)}"`)
+    .join(", ");
+
+  f.print("    for (const method of [", methodNames, "]) {");
+  f.print(
+    "      const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);"
+  );
+  f.print(
+    "      ",
+    annotation,
+    `("`,
+    localName(service),
+    `", method)(constructor.prototype[method], method, descriptor);`
+  );
+  f.print("    }");
 }
