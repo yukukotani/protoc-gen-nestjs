@@ -9,6 +9,7 @@ specifiers:
   '@nestjs/microservices': ^9.1.6
   '@nestjs/platform-express': ^9.1.6
   '@types/node': ^18.11.9
+  protoc-gen-nestjs: ^0.1.0
   reflect-metadata: ^0.1.13
   rxjs: ^7.5.7
   tsx: ^3.11.0
@@ -26,6 +27,7 @@ dependencies:
 devDependencies:
   '@bufbuild/protoc-gen-es': 0.2.1_@bufbuild+protobuf@0.2.1
   '@types/node': 18.11.9
+  protoc-gen-nestjs: 0.1.0_@bufbuild+protobuf@0.2.1
   tsx: 3.11.0
 
 packages:
@@ -1029,6 +1031,18 @@ packages:
       '@types/node': 18.11.9
       long: 5.2.0
     dev: false
+
+  /protoc-gen-nestjs/0.1.0_@bufbuild+protobuf@0.2.1:
+    resolution: {integrity: sha512-77BF2XGlVx27NLHeKqcFGS8L5JrJ+08m763tzHNWwLUz9Vpn2bIvyZGaocsCgDQoKzf/juHgxvwMko40G+m6vw==}
+    hasBin: true
+    peerDependencies:
+      '@bufbuild/protobuf': ^0.2.1
+    peerDependenciesMeta:
+      '@bufbuild/protobuf':
+        optional: true
+    dependencies:
+      '@bufbuild/protobuf': 0.2.1
+    dev: true
 
   /proxy-addr/2.0.7:
     resolution: {integrity: sha512-llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg==}
