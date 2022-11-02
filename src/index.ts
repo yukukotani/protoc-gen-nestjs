@@ -38,19 +38,22 @@ function printService(f: GeneratedFile, service: DescService) {
   f.print("}");
 
   const GrpcMethod = f.import("GrpcMethod", "@nestjs/microservices");
-  const methodNames = service.methods
+  const unaryMethodNames = service.methods
+    .filter((method) => method.methodKind === MethodKind.Unary)
     .map((method) => `"${localName(method)}"`)
     .join(", ");
   f.print("export function ", localServiceName, "Methods() {");
   f.print("  return function (constructor: Function) {");
-  f.print("    for (const method of [", methodNames, "]) {");
+  f.print("    for (const method of [", unaryMethodNames, "]) {");
   f.print(
     "      const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);"
   );
   f.print(
     "      ",
     GrpcMethod,
-    "('Members', method)(constructor.prototype[method], method, descriptor);"
+    `("`,
+    localServiceName,
+    `", method)(constructor.prototype[method], method, descriptor);`
   );
   f.print("    }");
   f.print("  };");
