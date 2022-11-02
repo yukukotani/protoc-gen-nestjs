@@ -35,6 +35,7 @@ plugins:
     opt: target=ts
   # This will invoke protoc-gen-nestjs and write output to src/gen
   - name: nestjs
+    out: src/gen
     opt: target=ts
 ```
 
