@@ -1,0 +1,10 @@
+{
+  "name": "plugins-yuku-protobuf-nestjs",
+  "version": "1.0.0",
+  "scripts": {
+    "build-push": "docker buildx build -t plugins.buf.build/yuku/nestjs:${VERSION} --push ."
+  },
+  "dependencies": {
+    "protoc-gen-nestjs": "0.1.1"
+  }
+}
