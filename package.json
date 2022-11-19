@@ -22,19 +22,14 @@
   "author": "Yuku Kotani (yukukotani@gmail.com)",
   "license": "Apache-2.0",
   "dependencies": {
-    "@bufbuild/protoplugin": "^0.2.1"
+    "@bufbuild/protoplugin": "^0.2.1",
+    "@bufbuild/protobuf": "^0.2.1"
   },
   "devDependencies": {
-    "@bufbuild/protobuf": "^0.2.1",
     "prettier": "^2.7.1",
     "typescript": "^4.8.4"
   },
   "peerDependencies": {
     "@bufbuild/protobuf": "^0.2.1"
-  },
-  "peerDependenciesMeta": {
-    "@bufbuild/protobuf": {
-      "optional": true
-    }
   }
 }
