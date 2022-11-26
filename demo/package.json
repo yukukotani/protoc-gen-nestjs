@@ -18,7 +18,7 @@
     "tsx": "^3.11.0"
   },
   "dependencies": {
-    "@bufbuild/protobuf": "^0.2.1",
+    "@bufbuild/protobuf": "^0.3.0",
     "@grpc/grpc-js": "^1.7.3",
     "@nestjs/common": "^9.1.6",
     "@nestjs/core": "^9.1.6",
