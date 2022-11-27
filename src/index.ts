@@ -1,6 +1,6 @@
 import { createEcmaScriptPlugin } from "@bufbuild/protoplugin";
 import { version } from "../package.json";
-import { makeJsDoc, localName, GeneratedFile, ImportSymbol, Printable } from "@bufbuild/protoplugin/ecmascript";
+import { makeJsDoc, localName, GeneratedFile, ImportSymbol } from "@bufbuild/protoplugin/ecmascript";
 import { DescMethod, DescService, MethodKind } from "@bufbuild/protobuf";
 import type { Schema } from "@bufbuild/protoplugin/ecmascript";
 
@@ -24,7 +24,7 @@ function generateTs(schema: Schema) {
 function printService(f: GeneratedFile, service: DescService) {
   const localServiceName = localName(service);
   f.print(makeJsDoc(service));
-  printTag(f)`export interface ${localServiceName}Controller {`;
+  f.print`export interface ${localServiceName}Controller {`;
   service.methods.forEach((method, i) => {
     if (i !== 0) {
       f.print();
@@ -43,7 +43,7 @@ function printService(f: GeneratedFile, service: DescService) {
   );
 
   f.print();
-  printTag(f)`export function ${localServiceName}Methods() {`;
+  f.print`export function ${localServiceName}Methods() {`;
   f.print("  return function (constructor: Function) {");
   printGrpcMethodAnnotations(f, GrpcMethod, unaryReqMethods, service);
   printGrpcMethodAnnotations(f, GrpcStreamMethod, streamReqMethods, service);
@@ -60,7 +60,7 @@ function printMethod(f: GeneratedFile, method: DescMethod) {
   const resType = isStreamRes ? [Observable, "<", method.output, ">"] : ["Promise<", method.output, ">"];
 
   f.print(makeJsDoc(method, "  "));
-  printTag(f)`  ${localName(method)}(request: ${reqType}): ${resType};`;
+  f.print`  ${localName(method)}(request: ${reqType}): ${resType};`;
 }
 
 function printGrpcMethodAnnotations(
@@ -71,22 +71,8 @@ function printGrpcMethodAnnotations(
 ) {
   const methodNames = methods.map((method) => `"${localName(method)}"`).join(", ");
 
-  printTag(f)`    for (const method of [${methodNames}]) {`;
-  f.print("      const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);");
-  printTag(f)`      ${annotation}("${localName(service)}", method)(constructor.prototype[method], method, descriptor);`;
-  f.print("    }");
-}
-
-function printTag(f: GeneratedFile) {
-  return function (fragments: TemplateStringsArray, ...values: Printable[]) {
-    const printables: Printable[] = [];
-    fragments.forEach((fragment, i) => {
-      printables.push(fragment);
-      if (fragments.length - 1 !== i) {
-        printables.push(values[i]);
-      }
-    });
-
-    f.print(...printables);
-  };
+  f.print`    for (const method of [${methodNames}]) {`;
+  f.print`      const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);`;
+  f.print`      ${annotation}("${localName(service)}", method)(constructor.prototype[method], method, descriptor);`;
+  f.print`    }`;
 }
