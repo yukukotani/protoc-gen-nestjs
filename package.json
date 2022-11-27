@@ -8,7 +8,8 @@
   "scripts": {
     "clean": "rm -rf ./dist/*",
     "build": "tsc -p tsconfig.json",
-    "push:docker": "docker buildx build --push --platform linux/amd64 --build-arg VERSION=${VERSION} -t plugins.buf.build/yuku/nestjs:${VERSION} ."
+    "push:docker": "docker buildx build --push --platform linux/amd64 --build-arg VERSION=${VERSION} -t plugins.buf.build/yuku/nestjs:${VERSION} .",
+    "fix:prettier": "prettier --write ."
   },
   "files": [
     "bin",

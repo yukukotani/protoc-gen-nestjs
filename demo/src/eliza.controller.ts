@@ -1,9 +1,6 @@
 import { Controller } from "@nestjs/common";
 import { Observable, Subject } from "rxjs";
-import {
-  ElizaServiceController,
-  ElizaServiceMethods,
-} from "../gen/buf/connect/demo/eliza/v1/eliza_nestjs";
+import { ElizaServiceController, ElizaServiceMethods } from "../gen/buf/connect/demo/eliza/v1/eliza_nestjs";
 import {
   ConverseRequest,
   ConverseResponse,
