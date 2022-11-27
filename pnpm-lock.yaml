@@ -46,9 +46,9 @@ importers:
 
   plugin:
     specifiers:
-      protoc-gen-nestjs: 0.1.2
+      protoc-gen-nestjs: 0.1.3
     dependencies:
-      protoc-gen-nestjs: 0.1.2
+      protoc-gen-nestjs: 0.1.3
 
 packages:
 
@@ -1054,8 +1054,8 @@ packages:
       long: 5.2.1
     dev: false
 
-  /protoc-gen-nestjs/0.1.2:
-    resolution: {integrity: sha512-kLs3MlN9IO8bc/uogcHtL5woOrDynNn5z8gKtdiVzN/FumxPVU3H91REjcORDjwc0T8Ik0I195a91bh8yuIT+w==}
+  /protoc-gen-nestjs/0.1.3:
+    resolution: {integrity: sha512-mJBDyAmw6NmXNRN+sfMwXqraJ/7RqV3weU8C4iYCRN2F7l+g2TfQ9ASu5EfA4Pqbk9k+WPa9FRTn26mzUdFHFw==}
     hasBin: true
     dependencies:
       '@bufbuild/protobuf': 0.3.0
