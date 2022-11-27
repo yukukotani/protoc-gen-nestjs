@@ -25,7 +25,7 @@ importers:
       '@nestjs/microservices': ^9.2.0
       '@nestjs/platform-express': ^9.2.0
       '@types/node': ^18.11.9
-      protoc-gen-nestjs: ^0.1.0
+      protoc-gen-nestjs: workspace:*
       reflect-metadata: ^0.1.13
       rxjs: ^7.5.7
       tsx: ^3.12.1
@@ -41,7 +41,7 @@ importers:
     devDependencies:
       '@bufbuild/protoc-gen-es': 0.3.0_@bufbuild+protobuf@0.3.0
       '@types/node': 18.11.9
-      protoc-gen-nestjs: 0.1.1_@bufbuild+protobuf@0.3.0
+      protoc-gen-nestjs: link:..
       tsx: 3.12.1
 
   plugin:
@@ -54,6 +54,7 @@ packages:
 
   /@bufbuild/protobuf/0.2.1:
     resolution: {integrity: sha512-7bsong0tlLQvkdq5K1U6qFFn35oggCwxaiOs1LHGsqkP/E1FvW4JmRHkxkjlyMNd01S5GbqCrnyHD5VW6l3Djg==}
+    dev: false
 
   /@bufbuild/protobuf/0.3.0:
     resolution: {integrity: sha512-+s4GgUc+hW4czQVtTG8axIMNwBpaStkRoxocVgJjbn1mfIcng4csyp/arX9CP9bYZmyyCysx+S3sBqGQhMQybw==}
@@ -82,6 +83,7 @@ packages:
       typescript: 4.5.2
     transitivePeerDependencies:
       - supports-color
+    dev: false
 
   /@bufbuild/protoplugin/0.3.0:
     resolution: {integrity: sha512-L0Queku6AjZoY12tVbd4j+utT51vq/rBfNJhqiv2z+CfIBdZ3NWeU7FP4z1U3wqAsUp+Mb17jifMWFHv5W6tLQ==}
@@ -1079,21 +1081,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: false
-
-  /protoc-gen-nestjs/0.1.1_@bufbuild+protobuf@0.3.0:
-    resolution: {integrity: sha512-F6NAiREOnPp4CA6Ro5+26aehw57NR0nktwgSaup1kNDxGsb3cxUf9NA9nDCSrCNJk7WhBtyPsKxJ3v6AVlomFg==}
-    hasBin: true
-    peerDependencies:
-      '@bufbuild/protobuf': ^0.2.1
-    peerDependenciesMeta:
-      '@bufbuild/protobuf':
-        optional: true
-    dependencies:
-      '@bufbuild/protobuf': 0.3.0
-      '@bufbuild/protoplugin': 0.2.1
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
 
   /proxy-addr/2.0.7:
     resolution: {integrity: sha512-llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg==}
