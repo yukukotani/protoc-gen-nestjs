@@ -4,20 +4,20 @@ importers:
 
   .:
     specifiers:
-      '@bufbuild/protobuf': ^0.3.0
-      '@bufbuild/protoplugin': ^0.3.0
+      '@bufbuild/protobuf': ^0.5.0
+      '@bufbuild/protoplugin': ^0.5.0
       prettier: ^2.8.0
       typescript: ^4.9.3
     dependencies:
-      '@bufbuild/protobuf': 0.3.0
-      '@bufbuild/protoplugin': 0.3.0
+      '@bufbuild/protobuf': 0.5.0
+      '@bufbuild/protoplugin': 0.5.0
     devDependencies:
       prettier: 2.8.0
       typescript: 4.9.3
 
   demo:
     specifiers:
-      '@bufbuild/protobuf': ^0.3.0
+      '@bufbuild/protobuf': ^0.5.0
       '@bufbuild/protoc-gen-es': ^0.3.0
       '@grpc/grpc-js': ^1.7.3
       '@nestjs/common': ^9.2.0
@@ -30,7 +30,7 @@ importers:
       rxjs: ^7.5.7
       tsx: ^3.12.1
     dependencies:
-      '@bufbuild/protobuf': 0.3.0
+      '@bufbuild/protobuf': 0.5.0
       '@grpc/grpc-js': 1.7.3
       '@nestjs/common': 9.2.0_yzt46al3aifnexifjjdb4dxxja
       '@nestjs/core': 9.2.0_wa6q7ilagyvj47l3ncr6fpacjq
@@ -39,7 +39,7 @@ importers:
       reflect-metadata: 0.1.13
       rxjs: 7.5.7
     devDependencies:
-      '@bufbuild/protoc-gen-es': 0.3.0_@bufbuild+protobuf@0.3.0
+      '@bufbuild/protoc-gen-es': 0.3.0_@bufbuild+protobuf@0.5.0
       '@types/node': 18.11.9
       protoc-gen-nestjs: link:..
       tsx: 3.12.1
@@ -55,7 +55,10 @@ packages:
   /@bufbuild/protobuf/0.3.0:
     resolution: {integrity: sha512-+s4GgUc+hW4czQVtTG8axIMNwBpaStkRoxocVgJjbn1mfIcng4csyp/arX9CP9bYZmyyCysx+S3sBqGQhMQybw==}
 
-  /@bufbuild/protoc-gen-es/0.3.0_@bufbuild+protobuf@0.3.0:
+  /@bufbuild/protobuf/0.5.0:
+    resolution: {integrity: sha512-YNK44nXtZWdsOjki9PwN8XtERRjQ8roE172o6/cRQBfGXM07EP+aKGwPL4HQdeqwMLHvz54QdItxLQqkJw00gw==}
+
+  /@bufbuild/protoc-gen-es/0.3.0_@bufbuild+protobuf@0.5.0:
     resolution: {integrity: sha512-ggM5kRfuKvl0O4WQFX+S/qHl6TrjyS6VbvpQv8voOGPb8X51MBKrK0A+oF0EPWr9UeT5KB5ExJ1lJgFRjLGsLQ==}
     engines: {node: '>=14'}
     hasBin: true
@@ -65,7 +68,7 @@ packages:
       '@bufbuild/protobuf':
         optional: true
     dependencies:
-      '@bufbuild/protobuf': 0.3.0
+      '@bufbuild/protobuf': 0.5.0
       '@bufbuild/protoplugin': 0.3.0
     transitivePeerDependencies:
       - supports-color
@@ -79,6 +82,16 @@ packages:
       typescript: 4.5.2
     transitivePeerDependencies:
       - supports-color
+
+  /@bufbuild/protoplugin/0.5.0:
+    resolution: {integrity: sha512-Ax6Dn4fQVM8WJG5m2srPcBiyxMm8Eg5q1H+NL8gfhTJHLrnHoU2fv51duriB5OZEl4cxzM+3+JWmVSFe0mRzZw==}
+    dependencies:
+      '@bufbuild/protobuf': 0.5.0
+      '@typescript/vfs': 1.4.0
+      typescript: 4.5.2
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
 
   /@esbuild-kit/cjs-loader/2.4.1:
     resolution: {integrity: sha512-lhc/XLith28QdW0HpHZvZKkorWgmCNT7sVelMHDj3HFdTfdqkwEKvT+aXVQtNAmCC39VJhunDkWhONWB7335mg==}
