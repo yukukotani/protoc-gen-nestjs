@@ -10,7 +10,7 @@ registry:
     rewrite_import_path_suffix: nestjs.js
     deps:
       - package: "@bufbuild/protoc-gen-es"
-        version: ^0.3.0
+        version: ^1.6.0
       - package: "@bufbuild/protobuf"
-        version: ^0.3.0
+        version: ^1.6.0
 spdx_license_id: Apache-2.0
