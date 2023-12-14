@@ -1,6 +1,6 @@
 import { createEcmaScriptPlugin } from "@bufbuild/protoplugin";
 import { version } from "../package.json";
-import { makeJsDoc, localName, GeneratedFile, ImportSymbol } from "@bufbuild/protoplugin/ecmascript";
+import { localName, GeneratedFile, ImportSymbol } from "@bufbuild/protoplugin/ecmascript";
 import { DescMethod, DescService, MethodKind } from "@bufbuild/protobuf";
 import type { Schema } from "@bufbuild/protoplugin/ecmascript";
 
@@ -23,7 +23,7 @@ function generateTs(schema: Schema) {
 
 function printService(f: GeneratedFile, service: DescService) {
   const localServiceName = localName(service);
-  f.print(makeJsDoc(service));
+  f.print(f.jsDoc(service));
   f.print`export interface ${localServiceName}Controller {`;
   service.methods.forEach((method, i) => {
     if (i !== 0) {
@@ -43,7 +43,7 @@ function printService(f: GeneratedFile, service: DescService) {
   );
 
   f.print();
-  f.print`export function ${localServiceName}Methods() {`;
+  f.print`${f.exportDecl("function", localServiceName + "Methods")}() {`;
   f.print("  return function (constructor: Function) {");
   printGrpcMethodAnnotations(f, GrpcMethod, unaryReqMethods, service);
   printGrpcMethodAnnotations(f, GrpcStreamMethod, streamReqMethods, service);
@@ -59,7 +59,7 @@ function printMethod(f: GeneratedFile, method: DescMethod) {
   const reqType = isStreamReq ? [Observable, "<", method.input, ">"] : [method.input];
   const resType = isStreamRes ? [Observable, "<", method.output, ">"] : ["Promise<", method.output, ">"];
 
-  f.print(makeJsDoc(method, "  "));
+  f.print(f.jsDoc(method, "  "));
   f.print`  ${localName(method)}(request: ${reqType}): ${resType};`;
 }
 
