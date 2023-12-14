@@ -15,7 +15,7 @@
     "@bufbuild/protoc-gen-es": "^1.6.0",
     "@types/node": "^18.11.9",
     "protoc-gen-nestjs": "workspace:*",
-    "tsx": "^3.12.1"
+    "tsx": "^3.14.0"
   },
   "dependencies": {
     "@bufbuild/protobuf": "^1.6.0",
