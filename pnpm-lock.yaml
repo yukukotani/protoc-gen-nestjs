@@ -65,14 +65,10 @@ importers:
   plugin:
     dependencies:
       protoc-gen-nestjs:
-        specifier: 0.1.3
-        version: 0.1.3(@bufbuild/protobuf@0.3.0)
+        specifier: 0.2.0
+        version: 0.2.0(@bufbuild/protobuf@1.6.0)
 
 packages:
-
-  /@bufbuild/protobuf@0.3.0:
-    resolution: {integrity: sha512-+s4GgUc+hW4czQVtTG8axIMNwBpaStkRoxocVgJjbn1mfIcng4csyp/arX9CP9bYZmyyCysx+S3sBqGQhMQybw==}
-    dev: false
 
   /@bufbuild/protobuf@1.6.0:
     resolution: {integrity: sha512-hp19vSFgNw3wBBcVBx5qo5pufCqjaJ0Cfk5H/pfjNOfNWU+4/w0QVOmfAOZNRrNWRrVuaJWxcN8P2vhOkkzbBQ==}
@@ -92,16 +88,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
-
-  /@bufbuild/protoplugin@0.3.0:
-    resolution: {integrity: sha512-L0Queku6AjZoY12tVbd4j+utT51vq/rBfNJhqiv2z+CfIBdZ3NWeU7FP4z1U3wqAsUp+Mb17jifMWFHv5W6tLQ==}
-    dependencies:
-      '@bufbuild/protobuf': 0.3.0
-      '@typescript/vfs': 1.4.0
-      typescript: 4.5.2
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
 
   /@bufbuild/protoplugin@1.6.0:
     resolution: {integrity: sha512-o53ZsvojHQkAPoC9v5sJifY2OfXdRU8DO3QpPoJ+QuvYcfB9Zb3DZkNMQRyfEbF4TVYiaQ0mZzZl1mESDdyCxA==}
@@ -1091,14 +1077,14 @@ packages:
       long: 5.2.1
     dev: false
 
-  /protoc-gen-nestjs@0.1.3(@bufbuild/protobuf@0.3.0):
-    resolution: {integrity: sha512-mJBDyAmw6NmXNRN+sfMwXqraJ/7RqV3weU8C4iYCRN2F7l+g2TfQ9ASu5EfA4Pqbk9k+WPa9FRTn26mzUdFHFw==}
+  /protoc-gen-nestjs@0.2.0(@bufbuild/protobuf@1.6.0):
+    resolution: {integrity: sha512-JobZh2ZS+wEDmaPLg0H2zIha0m0Qr5Rc9IxfD2NLo9/78WPq/Ulnk2ijfqrfgia08lxbOVDVUS8RvTfxgxiKEg==}
     hasBin: true
     peerDependencies:
-      '@bufbuild/protobuf': ^0.3.0
+      '@bufbuild/protobuf': ^1.6.0
     dependencies:
-      '@bufbuild/protobuf': 0.3.0
-      '@bufbuild/protoplugin': 0.3.0
+      '@bufbuild/protobuf': 1.6.0
+      '@bufbuild/protoplugin': 1.6.0
     transitivePeerDependencies:
       - supports-color
     dev: false
