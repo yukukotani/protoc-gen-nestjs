@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.4
+# syntax=docker/dockerfile:1.10
 FROM node:18.12-bullseye-slim AS build
 RUN npm install -g pnpm
 WORKDIR /app
