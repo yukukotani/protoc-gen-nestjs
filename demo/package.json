@@ -13,7 +13,7 @@
   "license": "ISC",
   "devDependencies": {
     "@bufbuild/protoc-gen-es": "^1.6.0",
-    "@types/node": "^18.11.9",
+    "@types/node": "^18.19.59",
     "protoc-gen-nestjs": "workspace:*",
     "tsx": "^3.14.0"
   },
