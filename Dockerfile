@@ -1,12 +1,12 @@
 # syntax=docker/dockerfile:1.4
-FROM node:18.12-bullseye-slim AS build
+FROM node:20.18-bullseye-slim AS build
 RUN npm install -g pnpm
 WORKDIR /app
 COPY --link package.json pnpm-workspace.yaml pnpm-lock.yaml .
 COPY --link plugin/package.json ./plugin/
 RUN pnpm install --filter '!demo' --frozen-lockfile --prod
 
-FROM node:18.12-bullseye-slim
+FROM node:20.18-bullseye-slim
 ARG VERSION
 COPY --link --from=build /app /app
 USER nobody
